@@ -15,15 +15,17 @@ const toggleUserState = (allUsers, userName) => {
     user.name === userName ? { ...user, active: !user.active } : user
   );
 
-  //   callback(updatedUsers);
+  return Promise.all(updatedUsers);
 
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(updatedUsers);
-    }, 0);
-  });
+  // 2й вариант решения вместо return Promise.all(updatedUsers);
 
-  return promise;
+  // const promise = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve(updatedUsers);
+  //   }, 0);
+  // });
+
+  // return promise;
 };
 
 const logger = (updatedUsers) => console.table(updatedUsers);
